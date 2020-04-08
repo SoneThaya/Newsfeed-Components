@@ -142,7 +142,7 @@ function makePanel({ title, date, firstParagraph, secondParagraph, thirdParagrap
   article.appendChild(paragraphThree)
   article.appendChild(exSpan)
 
-  articleTitle.classList.add('article')
+  article.classList.add('article')
   paragraphDate.classList.add('date')
   exSpan.classList.add('expandButton')
 
@@ -151,6 +151,7 @@ function makePanel({ title, date, firstParagraph, secondParagraph, thirdParagrap
   paragraphOne.textContent = firstParagraph
   paragraphTwo.textContent = secondParagraph
   paragraphThree.textContent = thirdParagraph
+  exSpan.textContent = 'read more'
   
 
   exSpan.addEventListener('click', event => {
@@ -161,7 +162,7 @@ function makePanel({ title, date, firstParagraph, secondParagraph, thirdParagrap
 }
 
 const articleElements = data.map(data => makePanel(data))
-console.log(articleElements)
+
 
 articleElements.forEach(articleElement => {
   newsFeed.appendChild(articleElement)
