@@ -127,6 +127,7 @@ const data = [
 const newsFeed = document.querySelector('.articles')
 
 function makePanel({ title, date, firstParagraph, secondParagraph, thirdParagraph }) {
+  
   const article = document.createElement('div')
   const articleTitle = document.createElement('h2')
   const paragraphDate = document.createElement('p')

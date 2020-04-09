@@ -40,36 +40,28 @@ const menuComponent = document.querySelector('.header')
 function makeMenu(arr) {
   const menu = document.createElement('div')
   const unorderedList = document.createElement('ul')
-  const menuList = document.createElement('li')
   
-
   menu.classList.add('menu');
+  
+  arr.forEach(function(item) {
+    const menuList = document.createElement('li')
+    menuList.textContent = item
+    unorderedList.appendChild(menuList)
+  })
 
   menu.appendChild(unorderedList)
-
-  for (let i = 0; i < arr.length; i++) {
-    //menuList.textContent = arr[i]
-
-    arr[i] = document.createElement('li')
-    arr[i].textContent = arr[i]
-    
-  }
   
   const menuButton = document.querySelector('.menu-button')
 
   menuButton.addEventListener('click', event => {
-    menu.classList.toggle('menu-open')
+    menu.classList.toggle('menu--open')
   })
-  console.log(menu)
+  
   return menu;
   
 }
 
+menuComponent.prepend(makeMenu(menuItems))
 
 
-
-makeMenu(menuItems)
-console.log(makeMenu(menuItems))
-
-  
 
