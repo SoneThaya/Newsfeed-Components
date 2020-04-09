@@ -85,6 +85,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Avengers End Game Part 3',
+    date: 'April 1st, 2019',
+    firstParagraph: `Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
+
+    “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”`,
+
+    secondParagraph: `The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content.`,
+
+    thirdParagraph: `The passage experienced a surge in popularity during the 1960s when Letraset used it on their dry-transfer sheets, and again during the 90s as desktop publishers bundled the text with their software. Today it's seen all around the web; on templates, websites, and stock designs. Use our generator to get your own, or read on for the authoritative history of lorem ipsum.`
   }
 ];
 
@@ -98,6 +109,7 @@ const data = [
 
     <span class='expandButton'></span>
   </div>
+  
 
   Hint: You will need to use createElement more than once here!
 
@@ -112,3 +124,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const newsFeed = document.querySelector('.articles')
+
+function makePanel({ title, date, firstParagraph, secondParagraph, thirdParagraph }) {
+  
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const paragraphDate = document.createElement('p')
+  const paragraphOne = document.createElement('p')
+  const paragraphTwo = document.createElement('p')
+  const paragraphThree = document.createElement('p')
+  const exSpan = document.createElement('span')
+
+  article.appendChild(articleTitle)
+  article.appendChild(paragraphDate)
+  article.appendChild(paragraphOne)
+  article.appendChild(paragraphTwo)
+  article.appendChild(paragraphThree)
+  article.appendChild(exSpan)
+
+  article.classList.add('article')
+  paragraphDate.classList.add('date')
+  exSpan.classList.add('expandButton')
+
+  articleTitle.textContent = title
+  paragraphDate.textContent = date
+  paragraphOne.textContent = firstParagraph
+  paragraphTwo.textContent = secondParagraph
+  paragraphThree.textContent = thirdParagraph
+  exSpan.textContent = 'read more'
+  
+
+  exSpan.addEventListener('click', event => {
+    article.classList.toggle('article-open')
+  })
+
+  return article
+}
+
+const articleElements = data.map(data => makePanel(data))
+
+
+articleElements.forEach(articleElement => {
+  newsFeed.appendChild(articleElement)
+})
